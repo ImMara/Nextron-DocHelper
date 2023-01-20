@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
 import Navbar from "../components/Navbar";
@@ -6,6 +6,7 @@ import MainLayout from "../layouts/MainLayout";
 
 
 function Home() {
+
   return (
     <React.Fragment>
       <Head>
@@ -15,13 +16,15 @@ function Home() {
         <title>Home - Nextron (with-javascript)</title>
       </Head>
       <MainLayout>
-          <div className="container">
-            <p>
-              ⚡ Electron + Next.js ⚡ -
-              <Link href="/next">
-                <a className="btn btn-danger">Go to next page</a>
-              </Link>
-            </p>
+          <div className="container w-100 d-flex flex-column justify-content-center">
+              <div>
+                  <h1 className={"my-5 fw-bolder"}>DOCHELPER APPLICATION</h1>
+                  <hr/>
+                  <p>1) Ajouter un utilisateur pour commencer</p>
+                  <p>2) Une fois ajouter selectionner le au dessus</p>
+                  <p>3) Ajouter des données pour l'utilisateur souhaiter</p>
+                  <p>4) Imprimer le pdf en cliquant sur le boutton</p>
+              </div>
           </div>
       </MainLayout>
     </React.Fragment>
