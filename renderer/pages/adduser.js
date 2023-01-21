@@ -1,7 +1,12 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import MainLayout from "../layouts/MainLayout";
+import electron from 'electron';
+import { useRouter } from 'next/router'
 
+const ipcRenderer = electron.ipcRenderer || false;
 function Adduser(props) {
+
+    const router = useRouter()
 
     const [users,setUsers] = useState([])
     const [body, setBody] = useState({
@@ -17,13 +22,28 @@ function Adduser(props) {
     }
 
     const handleClick = (event) =>{
-        console.log(body)
+        ipcRenderer.send('add-users', body);
         setUsers([...users,body])
         setBody({
             "nom": "",
             "prenom": "",
         })
+        router.push('/home')
     }
+
+    const handleDelete = (index)=>{
+        ipcRenderer.send('delete-users', index);
+        users.slice(index,1)
+        router.push('/home')
+    }
+
+    useEffect(()=>{
+        setUsers(ipcRenderer.sendSync('get-users'))
+        return () => {
+            // like componentWillUnmount()
+        };
+    },[])
+
 
     return (
         <MainLayout>
@@ -67,12 +87,12 @@ function Adduser(props) {
                     </thead>
                     <tbody>
                     {
-                        users.map(u => (
+                        users.map((u,i) => (
                             <tr>
                                 <th scope="row">1</th>
-                                <td>{u.nom}</td>
                                 <td>{u.prenom}</td>
-                                <td><a className="btn btn-danger">Supprimer</a></td>
+                                <td>{u.nom}</td>
+                                <td><a className="btn btn-danger" onClick={(event) => handleDelete(i)}>Supprimer</a></td>
                             </tr>
                         ))
                     }

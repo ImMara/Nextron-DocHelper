@@ -1,6 +1,7 @@
-import { app } from 'electron';
+import { app , ipcMain } from 'electron';
 import serve from 'electron-serve';
 import { createWindow } from './helpers';
+import Store from 'electron-store';
 
 const isProd = process.env.NODE_ENV === 'production';
 
@@ -30,3 +31,21 @@ if (isProd) {
 app.on('window-all-closed', () => {
   app.quit();
 });
+
+const store = new Store({ name: 'users' });
+
+ipcMain.on('get-users', (event, arg) => {
+  event.returnValue = store.get('users') || [];
+});
+
+ipcMain.on('add-users', (event, arg) => {
+  const users = store.get('users') || [];
+  users.push(arg);
+  store.set('users', users);
+});
+
+ipcMain.on('delete-users',(event,arg) => {
+  const users = store.get('users') || [];
+  users.splice(arg,1);
+  store.set('users',users);
+})

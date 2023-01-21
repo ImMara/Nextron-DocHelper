@@ -11,8 +11,11 @@
     "postinstall": "electron-builder install-app-deps"
   },
   "dependencies": {
+    "browserify-fs": "^1.0.0",
+    "electron-json-storage": "^4.6.0",
     "electron-serve": "^1.1.0",
-    "electron-store": "^8.1.0"
+    "electron-store": "^8.1.0",
+    "nedb": "^1.8.0"
   },
   "devDependencies": {
     "electron": "^21.3.3",
