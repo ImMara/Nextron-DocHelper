@@ -40,7 +40,7 @@ ipcMain.on('get-users', (event, arg) => {
 
 ipcMain.on('add-users', (event, arg) => {
   const users = store.get('users') || [];
-  users.push(arg);
+  users.push({...arg,"glycemie":[],"poids":[],"tension":[]});
   store.set('users', users);
 });
 
@@ -49,3 +49,28 @@ ipcMain.on('delete-users',(event,arg) => {
   users.splice(arg,1);
   store.set('users',users);
 })
+
+
+ipcMain.on('get-glycemie',(event,arg) => {
+    const users = store.get('users') || [];
+    const user = users.find((user) => user.prenom === arg);
+    event.returnValue = user.glycemie;
+})
+
+ipcMain.on('add-glycemie',(event,arg) => {
+  const users = store.get('users') || [];
+  const user = users.filter((userItem)=>{
+    return userItem.prenom === arg.user
+  });
+  console.log(user);
+
+    user[0].glycemie.push({
+        taux:arg.taux,
+        date:arg.date,
+        jun:arg.jun,
+        quand:arg.quand
+    });
+
+    store.set('users',users);
+    console.log(store.get('users'));
+});

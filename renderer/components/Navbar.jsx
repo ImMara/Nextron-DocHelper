@@ -24,14 +24,19 @@ function Navbar(props) {
                 </li>
                 {
                     users.map((u,i) => (
-                        <li className="nav-item">
-                            <a className="nav-link" href="#">{u.prenom}</a>
+                        <li className="nav-item" key={i}>
+                            <Link href={{
+                                pathname:`/users/${u.prenom}`,
+                                query:u
+                            }}>
+                                <a className="nav-link" href="#">{u.prenom}</a>
+                            </Link>
                         </li>
                     ))
                 }
                 <li className="ms-auto me-1 nav-item">
                     <Link href="/adduser">
-                        <a className="btn btn-danger">Ajouter une personne</a>
+                        <a className="btn btn-danger p-2"><i className="fa-solid fa-plus me-1"></i>Ajouter une personne</a>
                     </Link>
                 </li>
             </ul>
