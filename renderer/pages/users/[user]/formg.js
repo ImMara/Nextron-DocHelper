@@ -15,10 +15,6 @@ function formg(props) {
 
     const date = today.getFullYear()+'-'+monthIn2Digit+'-'+dateIn2Digit
 
-
-
-   // const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-
     // get the user id from the url
     const router = useRouter()
     const { user } = router.query
@@ -28,9 +24,7 @@ function formg(props) {
         e.preventDefault();
         const data = new FormData(e.target);
         const taux = data.get('taux');
-        // get checkbox value from the form
         const jun = data.get('jun');
-        console.log(jun)
         const quand = data.get('quand');
         const dateF = data.get('date');
 

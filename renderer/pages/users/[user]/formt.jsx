@@ -19,15 +19,17 @@ function Formt(props) {
     const add = (e) => {
         e.preventDefault();
         const data = new FormData(e.target);
-        console.log(e.target);
+        const dateF = data.get('date');
+        const tension = data.get('tension');
+        const heure = data.get('heure');
+
         const args = {
             user : user,
-            date : data.get('date'),
-            tension : data.get('tension'),
-            heure: data.get('heure')
+            date : dateF,
+            tension : tension,
+            heure: heure
         }
-        console.log(data);
-        ipcRenderer.sendSync('add-tension',args);
+        ipcRenderer.send('add-tension',args);
     }
 
     return (

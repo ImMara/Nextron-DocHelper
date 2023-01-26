@@ -27,7 +27,7 @@ function Formp(props) {
             poids:poids
         }
 
-        ipcRenderer.sendSync('add-poids',args);
+        ipcRenderer.send('add-poids',args);
     }
 
     return (
