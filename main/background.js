@@ -74,3 +74,42 @@ ipcMain.on('add-glycemie',(event,arg) => {
     store.set('users',users);
     console.log(store.get('users'));
 });
+
+ipcMain.on('get-poids',(event,arg) => {
+    const users = store.get('users') || [];
+    const user = users.find((user) => user.prenom === arg);
+    event.returnValue = user.poids;
+})
+
+ipcMain.on('add-poids',(event,arg) => {
+  const users = store.get('users') || [];
+    const user = users.filter((userItem)=>{
+      return userItem.prenom === arg.user
+    })
+    user[0].poids.push({
+        poids:arg.poids,
+        date:arg.date,
+    });
+    store.set('users',users);
+    console.log(store.get('users'));
+});
+
+ipcMain.on('get-tension',(event,arg) => {
+    const users = store.get('users') || [];
+    const user = users.find((user) => user.prenom === arg);
+    event.returnValue = user.tension;
+} )
+
+ipcMain.on('add-tension',(event,arg) => {
+    const users = store.get('users') || [];
+        const user = users.filter((userItem)=>{
+        return userItem.prenom === arg.user
+        })
+        user[0].tension.push({
+            tension:arg.tension,
+            date:arg.date,
+            heure:arg.heure,
+        });
+        store.set('users',users);
+        console.log(store.get('users'));
+});

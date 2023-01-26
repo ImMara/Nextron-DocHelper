@@ -7,7 +7,17 @@ const ipcRenderer = electron.ipcRenderer || false;
 function formg(props) {
 
     const today = new Date();
-    const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+
+    // get the current date with the format yyyy-mm-dd
+
+    const dateIn2Digit = String(today.getDate()).padStart(2, '0');
+    const monthIn2Digit = String(today.getMonth() + 1).padStart(2, '0');
+
+    const date = today.getFullYear()+'-'+monthIn2Digit+'-'+dateIn2Digit
+
+
+
+   // const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
 
     // get the user id from the url
     const router = useRouter()
@@ -45,8 +55,8 @@ function formg(props) {
                         <input type="number" name="taux" className="form-control" id="inputNumber" placeholder="Enter number" />
                     </div>
                     <div className="form-group mb-3">
-                        <label htmlFor="inputText">{date}</label>
-                        <input type="date" name="date" min={date.toString()} className="form-control" id="inputText" placeholder="Enter text" required />
+                        <label htmlFor="inputText">Date</label>
+                        <input type="date" name="date" defaultValue={date}  className="form-control" id="inputText" placeholder="Enter text" required />
                     </div>
                     <div className="form-group mb-3">
                         <label htmlFor="inputDate">Quand?</label>

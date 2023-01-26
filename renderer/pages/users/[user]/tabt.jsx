@@ -1,24 +1,21 @@
 import React, {useEffect, useState} from 'react';
-import {useRouter} from "next/router";
-import MainLayout from "../../../layouts/MainLayout";
 import electron from "electron";
-
-// tension : date heure tension
-// poids date kg
+import MainLayout from "../../../layouts/MainLayout";
+import {useRouter} from "next/router";
 
 const ipcRenderer = electron.ipcRenderer || false;
-function Tabg(props) {
+function Tabt(props) {
 
-    const { user } = useRouter().query;
-    console.log(user);
-    const [glycemie,setGlycemie] = useState([]);
+    const {user } = useRouter().query;
+    const [tensions,setTensions] = useState([]);
 
     useEffect(()=>{
-        setGlycemie(ipcRenderer.sendSync('get-glycemie',user))
+        setTensions(ipcRenderer.sendSync('get-tension',user))
         return () => {
             // like componentWillUnmount()
         };
     },[])
+
 
     return (
         <MainLayout>
@@ -28,7 +25,7 @@ function Tabg(props) {
                     <div className="col-12">
                         <div className="card">
                             <div className="card-header">
-                                <h3 className="card-title">Glycémie</h3>
+                                <h3 className="card-title">Tensions</h3>
                             </div>
                             {/* /.card-header */}
                             <div className="card-body">
@@ -36,19 +33,17 @@ function Tabg(props) {
                                     <thead>
                                     <tr>
                                         <th>Date</th>
-                                        <th>Taux</th>
-                                        <th>Quand?</th>
-                                        <th>A jun?</th>
+                                        <th>Heure</th>
+                                        <th>Tension</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     {
-                                        glycemie.slice(0).reverse().map((g,i) => (
+                                        tensions.slice(0).reverse().map((t,i) => (
                                             <tr key={i}>
-                                                <td>{g.date}</td>
-                                                <td>{g.taux}</td>
-                                                <td>{g.quand}</td>
-                                                <td>{g.jun ? 'oui' : 'non'}</td>
+                                                <td>{t.date}</td>
+                                                <td>{t.heure}</td>
+                                                <td>{t.tension}</td>
                                             </tr>
                                         ))
                                     }
@@ -56,9 +51,8 @@ function Tabg(props) {
                                     <tfoot>
                                     <tr>
                                         <th>Date</th>
-                                        <th>Taux</th>
-                                        <th>Quand?</th>
-                                        <th>A jun?</th>
+                                        <th>Heure</th>
+                                        <th>Tension</th>
                                     </tr>
                                     </tfoot>
                                 </table>
@@ -78,11 +72,10 @@ function Tabg(props) {
                     </div>
                     {/* /.col */}
                 </div>
-                {/* /.row */}
+            {/* /.row */}
             </div>
-            {/* /.container-fluid */}
         </MainLayout>
     );
 }
 
-export default Tabg;
+export default Tabt;

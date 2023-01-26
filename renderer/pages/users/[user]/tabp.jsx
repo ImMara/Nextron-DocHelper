@@ -1,20 +1,16 @@
 import React, {useEffect, useState} from 'react';
-import {useRouter} from "next/router";
 import MainLayout from "../../../layouts/MainLayout";
+import {useRouter} from "next/router";
 import electron from "electron";
 
-// tension : date heure tension
-// poids date kg
-
 const ipcRenderer = electron.ipcRenderer || false;
-function Tabg(props) {
+function Tabp(props) {
 
     const { user } = useRouter().query;
-    console.log(user);
-    const [glycemie,setGlycemie] = useState([]);
+    const [poids,setPoids] = useState([]);
 
     useEffect(()=>{
-        setGlycemie(ipcRenderer.sendSync('get-glycemie',user))
+        setPoids(ipcRenderer.sendSync('get-poids',user))
         return () => {
             // like componentWillUnmount()
         };
@@ -28,7 +24,7 @@ function Tabg(props) {
                     <div className="col-12">
                         <div className="card">
                             <div className="card-header">
-                                <h3 className="card-title">Glycémie</h3>
+                                <h3 className="card-title">Poids</h3>
                             </div>
                             {/* /.card-header */}
                             <div className="card-body">
@@ -36,19 +32,15 @@ function Tabg(props) {
                                     <thead>
                                     <tr>
                                         <th>Date</th>
-                                        <th>Taux</th>
-                                        <th>Quand?</th>
-                                        <th>A jun?</th>
+                                        <th>Poids</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     {
-                                        glycemie.slice(0).reverse().map((g,i) => (
+                                        poids.slice(0).reverse().map((p,i) => (
                                             <tr key={i}>
-                                                <td>{g.date}</td>
-                                                <td>{g.taux}</td>
-                                                <td>{g.quand}</td>
-                                                <td>{g.jun ? 'oui' : 'non'}</td>
+                                                <td>{p.date}</td>
+                                                <td>{p.poids}</td>
                                             </tr>
                                         ))
                                     }
@@ -56,21 +48,10 @@ function Tabg(props) {
                                     <tfoot>
                                     <tr>
                                         <th>Date</th>
-                                        <th>Taux</th>
-                                        <th>Quand?</th>
-                                        <th>A jun?</th>
+                                        <th>Poids</th>
                                     </tr>
                                     </tfoot>
                                 </table>
-                                <nav aria-label="Page navigation example">
-                                    <ul className="pagination">
-                                        <li className="page-item"><a className="page-link" href="#">Previous</a></li>
-                                        <li className="page-item"><a className="page-link" href="#">1</a></li>
-                                        <li className="page-item"><a className="page-link" href="#">2</a></li>
-                                        <li className="page-item"><a className="page-link" href="#">3</a></li>
-                                        <li className="page-item"><a className="page-link" href="#">Next</a></li>
-                                    </ul>
-                                </nav>
                             </div>
                             {/* /.card-body */}
                         </div>
@@ -80,9 +61,8 @@ function Tabg(props) {
                 </div>
                 {/* /.row */}
             </div>
-            {/* /.container-fluid */}
         </MainLayout>
     );
 }
 
-export default Tabg;
+export default Tabp;
