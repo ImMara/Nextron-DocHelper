@@ -2,7 +2,7 @@
   "private": true,
   "name": "my-nextron-app",
   "description": "My application description",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "author": "Yoshihide Shiono <shiono.yoshirun hide@gmail.com>",
   "main": "app/background.js",
   "scripts": {
@@ -16,17 +16,21 @@
   },
   "dependencies": {
     "browserify-fs": "^1.0.0",
-    "electron-forge": "^5.2.4",
     "electron-json-storage": "^4.6.0",
     "electron-serve": "^1.1.0",
+    "electron-squirrel-startup": "^1.0.0",
     "electron-store": "^8.1.0",
     "nedb": "^1.8.0",
     "update-electron-app": "^2.0.1"
   },
   "devDependencies": {
+    "@electron-forge/cli": "^6.0.4",
+    "@electron-forge/maker-deb": "^6.0.4",
+    "@electron-forge/maker-rpm": "^6.0.4",
+    "@electron-forge/maker-squirrel": "^6.0.4",
+    "@electron-forge/maker-zip": "^6.0.4",
     "@electron-forge/publisher-github": "^6.0.4",
     "electron": "^21.3.3",
-    "electron-builder": "^23.6.0",
     "next": "^12.3.4",
     "nextron": "^8.4.0",
     "react": "^18.2.0",

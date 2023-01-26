@@ -21,6 +21,8 @@ function Home() {
                   <p>2) Une fois ajouter selectionner le au dessus</p>
                   <p>3) Ajouter des données pour l'utilisateur souhaiter</p>
                   <p>4) Imprimer le pdf en cliquant sur le boutton</p>
+                  <hr/>
+                  <h2>V1.2</h2>
               </div>
           </div>
       </MainLayout>
