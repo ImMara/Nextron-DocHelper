@@ -2,14 +2,14 @@
   "private": true,
   "name": "DocHelper",
   "description": "help you to manage your documents",
-  "version": "1.3.3",
+  "version": "1.3.4",
   "author": "ImMara",
   "main": "app/background.js",
   "scripts": {
     "dev": "nextron",
-    "build": "nextron build --publish always",
+    "build": "nextron build --publish never",
     "postinstall": "electron-builder install-app-deps",
-    "deploy": "electron-builder build --mac --win --publish always"
+    "deploy": "nextron build --publish always"
   },
   "dependencies": {
     "browserify-fs": "^1.0.0",

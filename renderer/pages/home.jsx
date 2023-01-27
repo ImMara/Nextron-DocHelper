@@ -48,6 +48,7 @@ function Home() {
                   {/*    <p>{ updateDownloaded && "download done" }</p>*/}
                   {/*    <button onClick={restartApp}>Restart</button>*/}
                   {/*</div>*/}
+                  <p>test- -v4</p>
                   <h1 className={"my-5 fw-bolder"}>DOCHELPER APPLICATION {version && version.toString()}</h1>
                   <hr/>
                   <p>1) Ajouter un utilisateur pour commencer</p>
