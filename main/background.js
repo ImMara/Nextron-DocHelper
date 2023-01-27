@@ -17,6 +17,13 @@ if (isProd) {
     require('update-electron-app')()
     await app.whenReady();
 
+    autoUpdater.autoInstallOnAppQuit = true;
+
+    setInterval(() => {
+        autoUpdater.checkForUpdates()
+
+    }, 60000)
+
     const mainWindow = createWindow('main', {
         width: 1000,
         height: 600,
@@ -26,8 +33,6 @@ if (isProd) {
     mainWindow.once('ready-to-show', () => {
         autoUpdater.checkForUpdatesAndNotify();
     });
-
-
 
     if (isProd) {
         await mainWindow.loadURL('app://./home.html');
