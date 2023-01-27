@@ -53,7 +53,6 @@ function Home() {
                             updateDownloaded && <a className="btn btn-dark" onClick={restartApp}>Restart</a>
                       }
                   </div>
-                  <p>test- -v5</p>
                   <h1 className={"my-5 fw-bolder"}>DOCHELPER APPLICATION {version && version.toString()}</h1>
                   <hr/>
                   <p>1) Ajouter un utilisateur pour commencer</p>
