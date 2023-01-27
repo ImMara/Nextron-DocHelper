@@ -53,7 +53,7 @@ function Home() {
                             updateDownloaded && <a className="btn btn-dark" onClick={restartApp}>Restart</a>
                       }
                   </div>
-                  <h1 className={"my-5 fw-bolder"}>DOCHELPER APPLICATION {version && version.toString()}</h1>
+                  <h1 className={"my-5 fw-bolder text-danger"}>DOCHELPER APPLICATION {version && version.toString()}</h1>
 
               </div>
           </div>
