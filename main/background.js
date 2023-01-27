@@ -14,6 +14,7 @@ if (isProd) {
 }
 
 (async () => {
+    require('update-electron-app')()
     await app.whenReady();
 
     const mainWindow = createWindow('main', {
@@ -21,9 +22,12 @@ if (isProd) {
         height: 600,
         closable: true
     });
+
     mainWindow.once('ready-to-show', () => {
         autoUpdater.checkForUpdatesAndNotify();
     });
+
+
 
     if (isProd) {
         await mainWindow.loadURL('app://./home.html');
