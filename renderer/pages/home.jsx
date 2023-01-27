@@ -41,7 +41,7 @@ function Home() {
   return (
     <React.Fragment>
       <Head>
-        <title>Home - Nextron (with-javascript) - v </title>
+        <title>Home  - v </title>
       </Head>
       <MainLayout>
           <div className="container w-100 d-flex flex-column justify-content-center">
