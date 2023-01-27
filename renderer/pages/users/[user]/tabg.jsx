@@ -107,13 +107,18 @@ function Tabg(props) {
                                             </tr>
                                             </tfoot>
                                         </table>
-                                        <Paginate
-                                            postsPerPage={postsPerPage}
-                                            totalPosts={glycemie.length}
-                                            paginate={paginate}
-                                            previousPage={previousPage}
-                                            nextPage={nextPage}
-                                        />
+                                        {
+                                            pagination && (
+                                                <Paginate
+                                                    postsPerPage={postsPerPage}
+                                                    totalPosts={glycemie.length}
+                                                    paginate={paginate}
+                                                    previousPage={previousPage}
+                                                    nextPage={nextPage}
+                                                    currentPage={currentPage}
+                                                />
+                                            )
+                                        }
                                     </div>
                                     {/* /.card-body */}
                                 </div>

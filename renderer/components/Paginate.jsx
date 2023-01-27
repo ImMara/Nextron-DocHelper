@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Paginate({postsPerPage,totalPosts,paginate ,previousPage, nextPage}) {
+function Paginate({postsPerPage,totalPosts,paginate ,previousPage, nextPage , currentPage}) {
     const pageNumbers = [];
 
     for (let i = 1; i <= Math.ceil(totalPosts / postsPerPage); i++) {
@@ -13,7 +13,7 @@ function Paginate({postsPerPage,totalPosts,paginate ,previousPage, nextPage}) {
             <ul className="pagination">
                 <li className="page-item" onClick={previousPage}><a className="page-link" href="#">Previous</a></li>
                     {pageNumbers.map(number => (
-                        <li key={number} onClick={() => paginate(number)} className="page-item"><a className="page-link">{number}</a></li>
+                        <li key={number} onClick={() => paginate(number)} className={ currentPage === number ? "page-item active":"page-item"}><a className="page-link">{number}</a></li>
                     ))}
                 <li className="page-item" onClick={nextPage}><a className="page-link" href="#">Next</a></li>
             </ul>
