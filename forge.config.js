@@ -28,8 +28,7 @@ module.exports = {
           name: 'Nextron-DocHelper',
           token:process.env.GITHUB_TOKEN
         },
-        prerelease: false,
-        draft: true,
+        draft: true,git
       },
     },
   ],
