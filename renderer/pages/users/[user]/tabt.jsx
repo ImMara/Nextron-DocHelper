@@ -16,6 +16,10 @@ function Tabt(props) {
         };
     },[])
 
+    const print = () => {
+        window.print();
+    }
+
 
     return (
         <MainLayout>
@@ -26,6 +30,7 @@ function Tabt(props) {
                         <div className="card">
                             <div className="card-header">
                                 <h3 className="card-title">Tensions</h3>
+                                <a onClick={print} className="btn btn-danger">Imprimer</a>
                             </div>
                             {/* /.card-header */}
                             <div className="card-body">

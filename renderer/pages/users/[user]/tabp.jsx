@@ -16,6 +16,10 @@ function Tabp(props) {
         };
     },[])
 
+    const print = () => {
+        window.print();
+    }
+
     return (
         <MainLayout>
             {/*bootstrap table*/}
@@ -25,6 +29,7 @@ function Tabp(props) {
                         <div className="card">
                             <div className="card-header">
                                 <h3 className="card-title">Poids</h3>
+                                <a onClick={print} className="btn btn-danger">Imprimer</a>
                             </div>
                             {/* /.card-header */}
                             <div className="card-body">
