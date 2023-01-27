@@ -31,27 +31,29 @@ if (isProd) {
         await mainWindow.loadURL(`http://localhost:${port}/home`);
         mainWindow.webContents.openDevTools();
     }
+
+    ipcMain.on('app_version', (event) => {
+        event.sender.send('app_version', { version: app.getVersion() });
+    });
+
+    autoUpdater.on('update-available', () => {
+        mainWindow.webContents.send('update_available');
+    });
+
+    autoUpdater.on('update-downloaded', () => {
+        mainWindow.webContents.send('update_downloaded');
+    });
+
+    ipcMain.on('restart_app', () => {
+        autoUpdater.quitAndInstall();
+    });
 })();
 
 app.on('window-all-closed', () => {
     app.quit();
 });
 
-ipcMain.on('app_version', (event) => {
-    event.sender.send('app_version', { version: app.getVersion() });
-});
 
-autoUpdater.on('update-available', () => {
-    mainWindow.webContents.send('update_available');
-});
-
-autoUpdater.on('update-downloaded', () => {
-    mainWindow.webContents.send('update_downloaded');
-});
-
-ipcMain.on('restart_app', () => {
-    autoUpdater.quitAndInstall();
-});
 
 const store = new Store({ name: 'users' });
 
