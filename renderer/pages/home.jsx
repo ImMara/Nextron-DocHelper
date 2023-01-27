@@ -1,21 +1,60 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Head from 'next/head';
-import Link from 'next/link';
-import Navbar from "../components/Navbar";
 import MainLayout from "../layouts/MainLayout";
+import electron from "electron";
 
-
+const ipcRenderer = electron.ipcRenderer || false;
 function Home() {
+
+    const [version, setVersion] = useState('');
+    const [update, setUpdate] = useState(false);
+    const [updateDownloaded, setUpdateDownloaded] = useState(false);
+
+    useEffect(() => {
+        setVersion(ipcRenderer.sendSync('app_version'));
+
+        ipcRenderer.on('app_version', (event, arg) => {
+            ipcRenderer.removeAllListeners('app_version');
+            setVersion(arg.version);
+        });
+
+        ipcRenderer.on('update_available', () => {
+            ipcRenderer.removeAllListeners('update_available');
+            setUpdate(true);
+        })
+
+        ipcRenderer.on('update_downloaded', () => {
+            ipcRenderer.removeAllListeners('update_downloaded');
+            setUpdateDownloaded(true);
+        })
+
+        return () => {
+            // like componentWillUnmount()
+        }
+
+    }, [])
+
+
+
+    const restartApp = () => {
+        ipcRenderer.send('restart_app');
+    }
+
+    console.log(version);
 
   return (
     <React.Fragment>
       <Head>
-        <title>Home - Nextron (with-javascript)</title>
+        <title>Home - Nextron (with-javascript) - v </title>
       </Head>
       <MainLayout>
           <div className="container w-100 d-flex flex-column justify-content-center">
               <div>
-                  <h1 className={"my-5 fw-bolder"}>DOCHELPER APPLICATION</h1>
+                  <div>
+                      <p></p>
+                      <button onClick={restartApp}>Restart</button>
+                  </div>
+                  <h1 className={"my-5 fw-bolder"}>DOCHELPER APPLICATION {version && version.toString()}</h1>
                   <hr/>
                   <p>1) Ajouter un utilisateur pour commencer</p>
                   <p>2) Une fois ajouter selectionner le au dessus</p>

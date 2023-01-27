@@ -4,5 +4,4 @@ node_modules
 app
 dist
 .env
-
 out/

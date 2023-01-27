@@ -1,55 +1,74 @@
-import { app , ipcMain,autoUpdater } from 'electron';
+import { app , ipcMain } from 'electron';
 import serve from 'electron-serve';
+import { autoUpdater } from 'electron-updater';
 import { createWindow } from './helpers';
 import Store from 'electron-store';
-import electronBuilder from '@electron-forge/builder';
 
 const isProd = process.env.NODE_ENV === 'production';
 
 if (isProd) {
-  serve({ directory: 'app' });
+    serve({ directory: 'app' });
 
 } else {
-  app.setPath('userData', `${app.getPath('userData')} (development)`);
+    app.setPath('userData', `${app.getPath('userData')} (development)`);
 }
 
 (async () => {
-  await app.whenReady();
+    await app.whenReady();
 
-  const mainWindow = createWindow('main', {
-    width: 1000,
-    height: 600,
-  });
+    const mainWindow = createWindow('main', {
+        width: 1000,
+        height: 600,
+    });
+    mainWindow.once('ready-to-show', () => {
+        autoUpdater.checkForUpdatesAndNotify();
+    });
 
-  if (isProd) {
-    await mainWindow.loadURL('app://./home.html');
-  } else {
-    const port = process.argv[2];
-    await mainWindow.loadURL(`http://localhost:${port}/home`);
-    mainWindow.webContents.openDevTools();
-  }
+    if (isProd) {
+        await mainWindow.loadURL('app://./home.html');
+    } else {
+        const port = process.argv[2];
+        await mainWindow.loadURL(`http://localhost:${port}/home`);
+        mainWindow.webContents.openDevTools();
+    }
 })();
 
 app.on('window-all-closed', () => {
-  app.quit();
+    app.quit();
+});
+
+ipcMain.on('app_version', (event) => {
+    event.sender.send('app_version', { version: app.getVersion() });
+});
+
+autoUpdater.on('update-available', () => {
+    mainWindow.webContents.send('update_available');
+});
+
+autoUpdater.on('update-downloaded', () => {
+    mainWindow.webContents.send('update_downloaded');
+});
+
+ipcMain.on('restart_app', () => {
+    autoUpdater.quitAndInstall();
 });
 
 const store = new Store({ name: 'users' });
 
 ipcMain.on('get-users', (event, arg) => {
-  event.returnValue = store.get('users') || [];
+    event.returnValue = store.get('users') || [];
 });
 
 ipcMain.on('add-users', (event, arg) => {
-  const users = store.get('users') || [];
-  users.push({...arg,"glycemie":[],"poids":[],"tension":[]});
-  store.set('users', users);
+    const users = store.get('users') || [];
+    users.push({...arg,"glycemie":[],"poids":[],"tension":[]});
+    store.set('users', users);
 });
 
 ipcMain.on('delete-users',(event,arg) => {
-  const users = store.get('users') || [];
-  users.splice(arg,1);
-  store.set('users',users);
+    const users = store.get('users') || [];
+    users.splice(arg,1);
+    store.set('users',users);
 })
 
 
@@ -62,11 +81,11 @@ ipcMain.on('get-glycemie',(event,arg) => {
 })
 
 ipcMain.on('add-glycemie',(event,arg) => {
-  const users = store.get('users') || [];
+    const users = store.get('users') || [];
 
-  const user = users.filter((userItem)=>{
-    return userItem.prenom === arg.user
-  });
+    const user = users.filter((userItem)=>{
+        return userItem.prenom === arg.user
+    });
 
     user[0].glycemie.push({
         taux:arg.taux,
@@ -85,10 +104,10 @@ ipcMain.on('get-poids',(event,arg) => {
 })
 
 ipcMain.on('add-poids',(event,arg) => {
-  const users = store.get('users') || [];
+    const users = store.get('users') || [];
 
     const user = users.filter((userItem)=>{
-      return userItem.prenom === arg.user
+        return userItem.prenom === arg.user
     })
 
     user[0].poids.push({
@@ -110,15 +129,15 @@ ipcMain.on('get-tension',(event,arg) => {
 ipcMain.on('add-tension',(event,arg) => {
     const users = store.get('users') || [];
 
-        const user = users.filter((userItem)=>{
-            return userItem.prenom === arg.user
-        })
+    const user = users.filter((userItem)=>{
+        return userItem.prenom === arg.user
+    })
 
-        user[0].tension.push({
-            tension:arg.tension,
-            date:arg.date,
-            heure:arg.heure,
-        });
+    user[0].tension.push({
+        tension:arg.tension,
+        date:arg.date,
+        heure:arg.heure,
+    });
 
-        store.set('users',users);
+    store.set('users',users);
 });

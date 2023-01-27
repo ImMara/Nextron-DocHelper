@@ -26,7 +26,9 @@ module.exports = {
         repository: {
           owner: 'ImMara',
           name: 'Nextron-DocHelper',
+          token:process.env.GITHUB_TOKEN
         },
+        prerelease: false,
         draft: true,
       },
     },

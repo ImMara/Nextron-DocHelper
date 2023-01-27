@@ -7,12 +7,9 @@
   "main": "app/background.js",
   "scripts": {
     "dev": "nextron",
-    "build": "nextron build",
+    "build": "electron-builder build --mac --win --publish never",
     "postinstall": "electron-builder install-app-deps",
-    "start": "electron-forge start",
-    "package": "electron-forge package",
-    "make": "electron-forge make",
-    "publish": "electron-forge publish"
+    "deploy": "electron-builder build --mac --win --publish always"
   },
   "dependencies": {
     "browserify-fs": "^1.0.0",
@@ -30,10 +27,15 @@
     "@electron-forge/maker-squirrel": "^6.0.4",
     "@electron-forge/maker-zip": "^6.0.4",
     "@electron-forge/publisher-github": "^6.0.4",
-    "electron": "^22.1.0",
+    "electron": "^21.3.3",
+    "electron-updater": "^5.3.0",
     "next": "^12.3.4",
     "nextron": "^8.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
+  },
+  "repository": {
+    "directory": "git",
+    "url": "https://github.com/ImMara/Nextron-DocHelper.git"
   }
 }
