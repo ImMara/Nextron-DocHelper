@@ -19,7 +19,6 @@ if (isProd) {
     const mainWindow = createWindow('main', {
         width: 1000,
         height: 600,
-        closable: true
     });
 
     mainWindow.once('ready-to-show', () => {
@@ -54,10 +53,6 @@ ipcMain.on('restart', (event) => {
 ipcMain.on('app_version', (event) => {
     event.sender.send('app_version', { version: app.getVersion() });
 });
-
-
-
-
 
 const store = new Store({ name: 'users' });
 
