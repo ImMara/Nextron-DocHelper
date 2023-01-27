@@ -10,25 +10,6 @@ function Home() {
     const [update, setUpdate] = useState(false);
     const [updateDownloaded, setUpdateDownloaded] = useState(false);
 
-    // useEffect(() => {
-    //     setVersion(ipcRenderer.sendSync('app_version'));
-    //
-    //     ipcRenderer.on('app_version', (event, arg) => {
-    //         ipcRenderer.removeAllListeners('app_version');
-    //         setVersion(arg.version);
-    //     });
-    //
-    //     ipcRenderer.on('update_available', () => {
-    //         ipcRenderer.removeAllListeners('update_available');
-    //         setUpdate(true);
-    //     })
-    //
-    //     ipcRenderer.on('update_downloaded', () => {
-    //         ipcRenderer.removeAllListeners('update_downloaded');
-    //         setUpdateDownloaded(true);
-    //     })
-    // }, []);
-
 
     const restartApp = () => {
         ipcRenderer.send('restart_app');
