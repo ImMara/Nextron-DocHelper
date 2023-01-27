@@ -19,6 +19,7 @@ if (isProd) {
     const mainWindow = createWindow('main', {
         width: 1000,
         height: 600,
+        closable: true
     });
     mainWindow.once('ready-to-show', () => {
         autoUpdater.checkForUpdatesAndNotify();
@@ -45,14 +46,15 @@ app.on('window-all-closed', () => {
     app.quit();
 });
 
+ipcMain.on('restart', (event) => {
+    autoUpdater.quitAndInstall(true,true);
+});
 
 ipcMain.on('app_version', (event) => {
     event.sender.send('app_version', { version: app.getVersion() });
 });
 
-ipcMain.on('restart_app', () => {
-    autoUpdater.quitAndInstall();
-});
+
 
 
 

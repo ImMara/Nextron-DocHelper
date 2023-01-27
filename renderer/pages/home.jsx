@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import Head from 'next/head';
 import MainLayout from "../layouts/MainLayout";
 import electron from "electron";
+import {autoUpdater} from "electron-updater";
 
 const ipcRenderer = electron.ipcRenderer || false;
 function Home() {
@@ -10,21 +11,25 @@ function Home() {
     const [update, setUpdate] = useState(false);
     const [updateDownloaded, setUpdateDownloaded] = useState(false);
 
-    const restartApp = () => {
-        ipcRenderer.send('restart_app');
+    const restartApp = (e) => {
+        e.preventDefault();
+        ipcRenderer.send('restart');
     }
 
     useEffect(() => {
         if (ipcRenderer) {
             ipcRenderer.send('app_version');
+
             ipcRenderer.on('app_version', (event, arg) => {
                 ipcRenderer.removeAllListeners('app_version');
                 setVersion(arg.version);
             });
+
             ipcRenderer.on('update_available', () => {
                 ipcRenderer.removeAllListeners('update_available');
                 setUpdate(true);
             });
+
             ipcRenderer.on('update_downloaded', () => {
                 ipcRenderer.removeAllListeners('update_downloaded');
                 setUpdateDownloaded(true);
@@ -45,7 +50,7 @@ function Home() {
                       <p>{ update ? "update available":"up to date"}</p>
                       <p>{ updateDownloaded && "download done" }</p>
                       {
-                            updateDownloaded && <button onClick={restartApp}>Restart</button>
+                            <a className="btn btn-dark" onClick={restartApp}>Restart</a>
                       }
                   </div>
                   <p>test- -v5</p>
