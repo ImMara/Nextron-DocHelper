@@ -54,12 +54,7 @@ function Home() {
                       }
                   </div>
                   <h1 className={"my-5 fw-bolder"}>DOCHELPER APPLICATION {version && version.toString()}</h1>
-                  <hr/>
-                  <p>1) Ajouter un utilisateur pour commencer</p>
-                  <p>2) Une fois ajouter selectionner le au dessus</p>
-                  <p>3) Ajouter des données pour l'utilisateur souhaiter</p>
-                  <p>4) Imprimer le pdf en cliquant sur le boutton</p>
-                  <hr/>
+
               </div>
           </div>
       </MainLayout>
