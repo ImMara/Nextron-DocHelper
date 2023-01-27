@@ -14,15 +14,7 @@ if (isProd) {
 }
 
 (async () => {
-    require('update-electron-app')()
     await app.whenReady();
-
-    autoUpdater.autoInstallOnAppQuit = true;
-
-    setInterval(() => {
-        autoUpdater.checkForUpdates()
-
-    }, 60000)
 
     const mainWindow = createWindow('main', {
         width: 1000,
