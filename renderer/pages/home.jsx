@@ -10,7 +10,6 @@ function Home() {
     const [update, setUpdate] = useState(false);
     const [updateDownloaded, setUpdateDownloaded] = useState(false);
 
-
     const restartApp = () => {
         ipcRenderer.send('restart_app');
     }

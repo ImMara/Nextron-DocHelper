@@ -2,7 +2,7 @@
   "private": true,
   "name": "DocHelper",
   "description": "help you to manage your documents",
-  "version": "1.3.7",
+  "version": "1.3.9",
   "author": "ImMara <alaneraerts@live.be>",
   "main": "app/background.js",
   "scripts": {
