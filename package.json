@@ -2,12 +2,12 @@
   "private": true,
   "name": "DocHelper",
   "description": "help you to manage your documents",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "author": "ImMara",
   "main": "app/background.js",
   "scripts": {
     "dev": "nextron",
-    "build": "nextron build --all --publish always",
+    "build": "nextron build --publish always",
     "postinstall": "electron-builder install-app-deps",
     "deploy": "electron-builder build --mac --win --publish always"
   },

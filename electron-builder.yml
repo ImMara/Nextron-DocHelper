@@ -11,4 +11,4 @@ files:
       - app
 publish:
   provider: github
-  token: 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
+  token: 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
