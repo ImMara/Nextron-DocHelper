@@ -9,7 +9,7 @@
     "dev": "nextron",
     "build": "nextron build --publish never",
     "postinstall": "electron-builder install-app-deps",
-    "deploy": "nextron build --win --publish always"
+    "deploy": "nextron build --publish always"
   },
   "dependencies": {
     "browserify-fs": "^1.0.0",
