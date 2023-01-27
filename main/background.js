@@ -1,7 +1,8 @@
-import { app , ipcMain } from 'electron';
+import { app , ipcMain,autoUpdater } from 'electron';
 import serve from 'electron-serve';
 import { createWindow } from './helpers';
 import Store from 'electron-store';
+import electronBuilder from '@electron-forge/builder';
 
 const isProd = process.env.NODE_ENV === 'production';
 
