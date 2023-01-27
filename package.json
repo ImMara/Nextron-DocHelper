@@ -1,5 +1,5 @@
 {
-  "private": false,
+  "private": true,
   "name": "DocHelper",
   "description": "help you to manage your documents",
   "version": "1.3.2",
