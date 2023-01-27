@@ -10,30 +10,24 @@ function Home() {
     const [update, setUpdate] = useState(false);
     const [updateDownloaded, setUpdateDownloaded] = useState(false);
 
-    useEffect(() => {
-        setVersion(ipcRenderer.sendSync('app_version'));
-
-        ipcRenderer.on('app_version', (event, arg) => {
-            ipcRenderer.removeAllListeners('app_version');
-            setVersion(arg.version);
-        });
-
-        ipcRenderer.on('update_available', () => {
-            ipcRenderer.removeAllListeners('update_available');
-            setUpdate(true);
-        })
-
-        ipcRenderer.on('update_downloaded', () => {
-            ipcRenderer.removeAllListeners('update_downloaded');
-            setUpdateDownloaded(true);
-        })
-
-        return () => {
-            // like componentWillUnmount()
-        }
-
-    }, [])
-
+    // useEffect(() => {
+    //     setVersion(ipcRenderer.sendSync('app_version'));
+    //
+    //     ipcRenderer.on('app_version', (event, arg) => {
+    //         ipcRenderer.removeAllListeners('app_version');
+    //         setVersion(arg.version);
+    //     });
+    //
+    //     ipcRenderer.on('update_available', () => {
+    //         ipcRenderer.removeAllListeners('update_available');
+    //         setUpdate(true);
+    //     })
+    //
+    //     ipcRenderer.on('update_downloaded', () => {
+    //         ipcRenderer.removeAllListeners('update_downloaded');
+    //         setUpdateDownloaded(true);
+    //     })
+    // }, []);
 
 
     const restartApp = () => {
@@ -49,11 +43,11 @@ function Home() {
       <MainLayout>
           <div className="container w-100 d-flex flex-column justify-content-center">
               <div>
-                  <div>
-                      <p>{ update ? "update available":"up to date"}</p>
-                      <p>{ updateDownloaded && "download done" }</p>
-                      <button onClick={restartApp}>Restart</button>
-                  </div>
+                  {/*<div>*/}
+                  {/*    <p>{ update ? "update available":"up to date"}</p>*/}
+                  {/*    <p>{ updateDownloaded && "download done" }</p>*/}
+                  {/*    <button onClick={restartApp}>Restart</button>*/}
+                  {/*</div>*/}
                   <h1 className={"my-5 fw-bolder"}>DOCHELPER APPLICATION {version && version.toString()}</h1>
                   <hr/>
                   <p>1) Ajouter un utilisateur pour commencer</p>
@@ -61,7 +55,6 @@ function Home() {
                   <p>3) Ajouter des données pour l'utilisateur souhaiter</p>
                   <p>4) Imprimer le pdf en cliquant sur le boutton</p>
                   <hr/>
-                  <h2>V1.2</h2>
               </div>
           </div>
       </MainLayout>
