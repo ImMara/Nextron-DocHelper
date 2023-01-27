@@ -50,7 +50,7 @@ function Home() {
                       <p>{ update ? "update available":"up to date"}</p>
                       <p>{ updateDownloaded && "download done" }</p>
                       {
-                            <a className="btn btn-dark" onClick={restartApp}>Restart</a>
+                            updateDownloaded && <a className="btn btn-dark" onClick={restartApp}>Restart</a>
                       }
                   </div>
                   <p>test- -v5</p>
