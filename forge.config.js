@@ -24,7 +24,7 @@ module.exports = {
       name: '@electron-forge/publisher-github',
       config: {
         repository: {
-          owner: 'Alan Eraerts',
+          owner: 'ImMara',
           name: 'Nextron-DocHelper',
         },
         prerelease: false,
