@@ -3,7 +3,7 @@
   "name": "DocHelper",
   "description": "help you to manage your documents",
   "version": "1.3.2",
-  "author": "Alan Eraerts",
+  "author": "ImMara",
   "main": "app/background.js",
   "scripts": {
     "dev": "nextron",
