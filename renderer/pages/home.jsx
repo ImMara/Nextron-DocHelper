@@ -40,7 +40,6 @@ function Home() {
         ipcRenderer.send('restart_app');
     }
 
-    console.log(version);
 
   return (
     <React.Fragment>
@@ -51,7 +50,8 @@ function Home() {
           <div className="container w-100 d-flex flex-column justify-content-center">
               <div>
                   <div>
-                      <p></p>
+                      <p>{ update ? "update available":"up to date"}</p>
+                      <p>{ updateDownloaded && "download done" }</p>
                       <button onClick={restartApp}>Restart</button>
                   </div>
                   <h1 className={"my-5 fw-bolder"}>DOCHELPER APPLICATION {version && version.toString()}</h1>

@@ -1,9 +1,9 @@
-appId: com.example.nextron
-productName: My Nextron App
-copyright: Copyright © 2018 Yoshihide Shiono
+appId: doc-helper
+productName: DocHelper
+copyright: Copyright © 2023 Alan Eraerts
 directories:
   output: dist
-  buildResources: resourcesg
+  buildResources: resources
 files:
   - from: .
     filter:
