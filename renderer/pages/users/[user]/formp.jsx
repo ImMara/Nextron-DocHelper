@@ -49,7 +49,7 @@ function Formp(props) {
                                     </div>
                                     <div className="form-group mb-3">
                                         <label htmlFor="poids">Poids</label>
-                                        <input type="number" className="form-control" id="poids" name="poids" placeholder="Poids"/>
+                                        <input type="number" max={'150'}  className="form-control" id="poids" name="poids" placeholder="Poids"/>
                                     </div>
                                     <button type="submit" className="btn btn-primary">Submit</button>
                                 </form>
