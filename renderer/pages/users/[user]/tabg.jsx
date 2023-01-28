@@ -13,7 +13,7 @@ function Tabg(props) {
 
     // pagination
     const [currentPage, setCurrentPage] = useState(1);
-    const [postsPerPage] = useState(2);
+    const [postsPerPage] = useState(5);
 
     const {user} = useRouter().query;
     const [glycemie, setGlycemie] = useState([]);

@@ -2,12 +2,16 @@ import React, {useEffect, useState} from 'react';
 import electron from "electron";
 import MainLayout from "../../../layouts/MainLayout";
 import {useRouter} from "next/router";
+import Paginate from "../../../components/Paginate";
 
 const ipcRenderer = electron.ipcRenderer || false;
 function Tabt(props) {
 
     const {user } = useRouter().query;
     const [tensions,setTensions] = useState([]);
+    const [postsPerPage] = useState(5);
+    const [pagination, setPagination] = useState(true);
+    const [currentPage, setCurrentPage] = useState(1);
 
     useEffect(()=>{
         setTensions(ipcRenderer.sendSync('get-tension',user))
@@ -16,8 +20,30 @@ function Tabt(props) {
         };
     },[])
 
-    const print = () => {
-        window.print();
+    const indexOfLastTension = currentPage * postsPerPage;
+    const indexOfFirstTension = indexOfLastTension - postsPerPage;
+    const currentTensions = tensions.slice(0).reverse().slice(indexOfFirstTension, indexOfLastTension);
+
+    const paginate = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    }
+
+    const previousPage = () => {
+        if (currentPage !== 1) {
+            setCurrentPage(currentPage - 1);
+        }
+    }
+
+    const nextPage = () => {
+        if (currentPage !== Math.ceil(tensions.length / postsPerPage)) {
+            setCurrentPage(currentPage + 1);
+        }
+    }
+
+    const print = async () => {
+        await setPagination(false);
+        await window.print();
+        setPagination(true);
     }
 
 
@@ -44,6 +70,14 @@ function Tabt(props) {
                                     </thead>
                                     <tbody>
                                     {
+                                        pagination ? currentTensions.map((t,i) => (
+                                            <tr key={i}>
+                                                <td>{t.date}</td>
+                                                <td>{t.heure}</td>
+                                                <td>{t.tension}</td>
+                                            </tr>
+                                        )) :
+
                                         tensions.slice(0).reverse().map((t,i) => (
                                             <tr key={i}>
                                                 <td>{t.date}</td>
@@ -61,15 +95,14 @@ function Tabt(props) {
                                     </tr>
                                     </tfoot>
                                 </table>
-                                <nav aria-label="Page navigation example">
-                                    <ul className="pagination">
-                                        <li className="page-item"><a className="page-link" href="#">Previous</a></li>
-                                        <li className="page-item"><a className="page-link" href="#">1</a></li>
-                                        <li className="page-item"><a className="page-link" href="#">2</a></li>
-                                        <li className="page-item"><a className="page-link" href="#">3</a></li>
-                                        <li className="page-item"><a className="page-link" href="#">Next</a></li>
-                                    </ul>
-                                </nav>
+                                <Paginate
+                                    postsPerPage={postsPerPage}
+                                    totalPosts={tensions.length}
+                                    paginate={paginate}
+                                    previousPage={previousPage}
+                                    nextPage={nextPage}
+                                    currentPage={currentPage}
+                                />
                             </div>
                             {/* /.card-body */}
                         </div>
