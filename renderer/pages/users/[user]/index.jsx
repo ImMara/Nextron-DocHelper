@@ -48,7 +48,6 @@ function Index(props) {
                     </div>
 
                 </div>
-                <a href=""></a>
             </div>
 
         </MainLayout>

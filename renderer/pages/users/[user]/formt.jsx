@@ -49,17 +49,17 @@ function Formt(props) {
                                 <form onSubmit={add}>
                                     <div className="form-group mb-3">
                                         <label htmlFor="date">Date</label>
-                                        <input type="date" defaultValue={date} name="date" className="form-control"
+                                        <input type="date" required defaultValue={date} name="date" className="form-control"
                                                id="date" placeholder="Date"/>
                                     </div>
                                     <div className="form-group mb-3">
                                         <label htmlFor="tension">Tension</label>
-                                        <input type="number" name="tension" className="form-control" id="tension"
+                                        <input type="number" required name="tension" className="form-control" id="tension"
                                                placeholder="Tension"/>
                                     </div>
                                     <div className="form-group mb-3">
                                         <label htmlFor="heure">Heure?</label>
-                                        <input type="time" defaultValue={time} name="heure" className="form-control"
+                                        <input type="time" required defaultValue={time} name="heure" className="form-control"
                                                id="quand" placeholder="Heure"/>
                                     </div>
                                     <button type="submit" className="btn btn-primary">Submit</button>

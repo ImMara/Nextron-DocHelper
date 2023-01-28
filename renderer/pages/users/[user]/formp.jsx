@@ -45,11 +45,11 @@ function Formp(props) {
                                 <form onSubmit={add} className="p-3">
                                     <div className="form-group mb-3">
                                         <label htmlFor="date">Date</label>
-                                        <input type="date" defaultValue={date} className="form-control" id="date" name="date" placeholder="Date"/>
+                                        <input type="date" required defaultValue={date} className="form-control" id="date" name="date" placeholder="Date"/>
                                     </div>
                                     <div className="form-group mb-3">
                                         <label htmlFor="poids">Poids</label>
-                                        <input type="number" max={'150'}  className="form-control" id="poids" name="poids" placeholder="Poids"/>
+                                        <input type="number" required max={'150'}  className="form-control" id="poids" name="poids" placeholder="Poids"/>
                                     </div>
                                     <button type="submit" className="btn btn-primary">Submit</button>
                                 </form>

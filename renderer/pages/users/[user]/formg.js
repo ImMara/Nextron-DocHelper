@@ -54,18 +54,18 @@ function formg(props) {
                             <form onSubmit={add} className='p-3'>
                                 <div className="form-group mb-3">
                                     <label htmlFor="inputNumber">Taux</label>
-                                    <input type="number" name="taux" className="form-control" id="inputNumber"
+                                    <input type="number" name="taux" required className="form-control" id="inputNumber"
                                            placeholder="Enter number"/>
                                 </div>
                                 <div className="form-group mb-3">
                                     <label htmlFor="inputText">Date</label>
-                                    <input type="date" name="date" defaultValue={date} className="form-control"
+                                    <input type="date" name="date" required defaultValue={date} className="form-control"
                                            id="inputText" placeholder="Enter text" required/>
                                 </div>
                                 <div className="form-group mb-3">
                                     <label htmlFor="inputDate">Quand?</label>
-                                    <select className="form-select" name="quand" aria-label="Default select example">
-                                        <option selected hidden>Open this select menu</option>
+                                    <select className="form-select" required name="quand" aria-label="Default select example">
+                                        <option disabled selected value="" hidden>Open this select menu</option>
                                         <option value="Avant-Repas">Avant-midi</option>
                                         <option value="Apres-Repas">Apres repas</option>
                                     </select>
