@@ -71,7 +71,7 @@ function Tabp(props) {
                                         currentPoids.map((p,i) => (
                                             <tr key={i}>
                                                 <td>{p.date}</td>
-                                                <td>{p.poids}</td>
+                                                <td>{p.poids} kg</td>
                                             </tr>
                                         ))
                                         :
@@ -79,7 +79,7 @@ function Tabp(props) {
                                         poids.slice(0).reverse().map((p,i) => (
                                             <tr key={i}>
                                                 <td>{p.date}</td>
-                                                <td>{p.poids}</td>
+                                                <td>{p.poids} kg</td>
                                             </tr>
                                         )))
                                     }

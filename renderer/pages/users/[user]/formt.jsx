@@ -10,8 +10,11 @@ function Formt(props) {
     const today = new Date();
     const dateIn2Digit = String(today.getDate()).padStart(2, '0');
     const monthIn2Digit = String(today.getMonth() + 1).padStart(2, '0');
+    const hourIn2Digit = String(today.getHours()).padStart(2, '0');
+    const minuteIn2Digit = String(today.getMinutes()).padStart(2, '0');
 
     const date = today.getFullYear()+'-'+monthIn2Digit+'-'+dateIn2Digit;
+    const time = `${hourIn2Digit}:${minuteIn2Digit}`;
 
     const router = useRouter()
     const { user } = router.query;
@@ -39,7 +42,7 @@ function Formt(props) {
                 <form onSubmit={add}>
                     <div className="form-group mb-3">
                         <label htmlFor="date">Date</label>
-                        <input type="date" name="date" className="form-control" id="date" placeholder="Date"/>
+                        <input type="date" defaultValue={date} name="date" className="form-control" id="date" placeholder="Date"/>
                     </div>
                     <div className="form-group mb-3">
                         <label htmlFor="tension">Tension</label>
@@ -47,7 +50,7 @@ function Formt(props) {
                     </div>
                     <div className="form-group mb-3">
                         <label htmlFor="heure">Heure?</label>
-                        <input type="time" name="heure" className="form-control" id="quand" placeholder="Heure"/>
+                        <input type="time" defaultValue={time} name="heure" className="form-control" id="quand" placeholder="Heure"/>
                     </div>
                     <button type="submit" className="btn btn-primary">Submit</button>
                 </form>
