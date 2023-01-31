@@ -19,26 +19,33 @@ function formg(props) {
     // get the user id from the url
     const router = useRouter()
     const {user} = router.query
-    console.log(user)
 
     const add = (e) => {
+
         e.preventDefault();
-        const data = new FormData(e.target);
-        const taux = data.get('taux');
-        const jun = data.get('jun');
-        const quand = data.get('quand');
-        const dateF = data.get('date');
 
-        const arg = {
-            user: user,
-            taux: taux,
-            date: dateF,
-            jun: jun,
-            quand: quand
+            const data = new FormData(e.target);
+            const taux = data.get('taux');
+            const jun = data.get('jun');
+            const quand = data.get('quand');
+            const dateF = data.get('date');
+
+            const arg = {
+                user: user,
+                taux: taux,
+                date: dateF,
+                jun: jun,
+                quand: quand
+            }
+
+            const response = ipcRenderer.sendSync('add-glycemie', arg);
+            if(response){
+                alert('Ajouté avec succès')
+                e.target.reset();
+            }else{
+                alert('Erreur lors de l\'ajout')
+            }
         }
-
-        ipcRenderer.send('add-glycemie', arg);
-    }
 
     return (
         <MainLayout>
@@ -76,7 +83,7 @@ function formg(props) {
                                         A jeun
                                     </label>
                                 </div>
-                                <button className="btn btn-success">Ajouter</button>
+                                <button className="btn btn-danger">Ajouter une prise de sucre</button>
                             </form>
                         </div>
                     </div>

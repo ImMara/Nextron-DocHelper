@@ -27,7 +27,13 @@ function Formp(props) {
             poids:poids
         }
 
-        ipcRenderer.send('add-poids',args);
+        const response = ipcRenderer.sendSync('add-poids',args);
+        if (response) {
+            alert('Poids ajouté avec succès');
+            e.target.reset();
+        } else {
+            alert('Erreur lors de l\'ajout du poids');
+        }
     }
 
     return (
@@ -51,7 +57,7 @@ function Formp(props) {
                                         <label htmlFor="poids">Poids</label>
                                         <input type="number" required max={'150'}  className="form-control" id="poids" name="poids" placeholder="Poids"/>
                                     </div>
-                                    <button type="submit" className="btn btn-primary">Submit</button>
+                                    <button type="submit" className="btn btn-danger">Ajouter une prise de poids</button>
                                 </form>
                             </div>
                             {/* /.card-body */}

@@ -81,21 +81,31 @@ ipcMain.on('get-glycemie',(event,arg) => {
     event.returnValue = user.glycemie;
 })
 
-ipcMain.on('add-glycemie',(event,arg) => {
-    const users = store.get('users') || [];
+ipcMain.on('add-glycemie', (event,arg) => {
 
-    const user = users.filter((userItem)=>{
-        return userItem.prenom === arg.user
-    });
+    try{
 
-    user[0].glycemie.push({
-        taux:arg.taux,
-        date:arg.date,
-        jun:arg.jun,
-        quand:arg.quand
-    });
+        const users = store.get('users') || [];
 
-    store.set('users',users);
+        const user = users.filter((userItem)=>{
+            return userItem.prenom === arg.user
+        });
+
+        user[0].glycemie.push({
+            taux:arg.taux,
+            date:arg.date,
+            jun:arg.jun,
+            quand:arg.quand
+        });
+
+        store.set('users',users);
+        // success message
+        event.returnValue = true;
+    }catch(e){
+        // error message
+        event.returnValue = false;
+    }
+
 });
 
 ipcMain.on('get-poids',(event,arg) => {
@@ -105,18 +115,22 @@ ipcMain.on('get-poids',(event,arg) => {
 })
 
 ipcMain.on('add-poids',(event,arg) => {
-    const users = store.get('users') || [];
 
-    const user = users.filter((userItem)=>{
-        return userItem.prenom === arg.user
-    })
+    try {
 
-    user[0].poids.push({
-        poids:arg.poids,
-        date:arg.date,
-    });
-
-    store.set('users',users);
+        const users = store.get('users') || [];
+        const user = users.filter((userItem)=>{
+            return userItem.prenom === arg.user
+        })
+        user[0].poids.push({
+            poids:arg.poids,
+            date:arg.date,
+        });
+        store.set('users',users);
+        event.returnValue = true;
+    } catch (error) {
+        event.returnValue = false;
+    }
 });
 
 ipcMain.on('get-tension',(event,arg) => {
@@ -128,17 +142,24 @@ ipcMain.on('get-tension',(event,arg) => {
 } )
 
 ipcMain.on('add-tension',(event,arg) => {
-    const users = store.get('users') || [];
+    try {
 
-    const user = users.filter((userItem)=>{
-        return userItem.prenom === arg.user
-    })
+        const users = store.get('users') || [];
 
-    user[0].tension.push({
-        tension:arg.tension,
-        date:arg.date,
-        heure:arg.heure,
-    });
+        const user = users.filter((userItem) => {
+            return userItem.prenom === arg.user
+        })
 
-    store.set('users',users);
+        user[0].tension.push({
+            tension: arg.tension,
+            date: arg.date,
+            heure: arg.heure,
+        });
+
+        store.set('users', users);
+        event.returnValue = true;
+    } catch (error) {
+        event.returnValue = false;
+    }
+
 });

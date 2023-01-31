@@ -32,7 +32,14 @@ function Formt(props) {
             tension: tension,
             heure: heure
         }
-        ipcRenderer.send('add-tension', args);
+
+        const response = ipcRenderer.sendSync('add-tension', args);
+        if (response) {
+            alert('Tension ajoutée avec succès');
+            e.target.reset();
+        }else{
+            alert('Erreur lors de l\'ajout de la tension');
+        }
     }
 
     return (
@@ -62,7 +69,7 @@ function Formt(props) {
                                         <input type="time" required defaultValue={time} name="heure" className="form-control"
                                                id="quand" placeholder="Heure"/>
                                     </div>
-                                    <button type="submit" className="btn btn-primary">Submit</button>
+                                    <button type="submit" className="btn btn-danger">Ajouter une prise de tension</button>
                                 </form>
                             </div>
                             {/* /.card-body */}

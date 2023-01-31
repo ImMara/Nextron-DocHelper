@@ -10,9 +10,6 @@ function Navbar(props) {
     const currentUser = router.query;
     const path = router.asPath;
 
-    console.log(currentUser)
-    console.log(path)
-
     const [users,setUsers] = useState([]);
     const [user,setUser] = useState(null);
 
