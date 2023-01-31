@@ -60,19 +60,19 @@ function formg(props) {
                         <div className="card-body">
                             <form onSubmit={add} className='p-3'>
                                 <div className="form-group mb-3">
-                                    <label htmlFor="inputNumber">Taux</label>
+                                    <label htmlFor="inputNumber">Taux de sucre</label>
                                     <input type="number" name="taux" required className="form-control" id="inputNumber"
-                                           placeholder="Enter number"/>
+                                           placeholder="Ajouter le taux de sucre mesuré"/>
                                 </div>
                                 <div className="form-group mb-3">
-                                    <label htmlFor="inputText">Date</label>
+                                    <label htmlFor="inputText">Ajouter une date</label>
                                     <input type="date" name="date" required defaultValue={date} className="form-control"
-                                           id="inputText" placeholder="Enter text" required/>
+                                           id="inputText" placeholder="Ajouter une date" required/>
                                 </div>
                                 <div className="form-group mb-3">
-                                    <label htmlFor="inputDate">Quand?</label>
+                                    <label htmlFor="inputDate">Quand est la mesure a été prise?</label>
                                     <select className="form-select" required name="quand" aria-label="Default select example">
-                                        <option disabled selected value="" hidden>Open this select menu</option>
+                                        <option disabled selected value="" hidden>Ouvrir le menu</option>
                                         <option value="Avant-Repas">Avant-midi</option>
                                         <option value="Apres-Repas">Apres repas</option>
                                     </select>
@@ -80,7 +80,7 @@ function formg(props) {
                                 <div className="form-check mb-3">
                                     <input className="form-check-input" name="jun" type="checkbox" id="defaultCheck1"/>
                                     <label className="form-check-label" htmlFor="defaultCheck1">
-                                        A jeun
+                                        La prise est faite à jeun ? Si oui, cocher la case.
                                     </label>
                                 </div>
                                 <button className="btn btn-danger">Ajouter une prise de sucre</button>

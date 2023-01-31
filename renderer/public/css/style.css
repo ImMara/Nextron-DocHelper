@@ -4,10 +4,13 @@ html,body{
 #__next{
     width: 100%;
 }
+.sp{
+    width: initial;
+}
 
 /* responsive >=576px */
-@media (min-width: 576px){
+@media (max-width: 576px){
     .sp{
-        width: 100% !important;
+        width: 100%;
     }
 }

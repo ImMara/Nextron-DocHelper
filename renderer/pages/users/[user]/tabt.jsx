@@ -59,7 +59,7 @@ function Tabt(props) {
                                 <a onClick={print} className="btn btn-danger">Imprimer</a>
                             </div>
                             {/* /.card-header */}
-                            <div className="card-body">
+                            <div className="card-body overflow-auto">
                                 <table id="example2" className="table table-bordered table-hover">
                                     <thead>
                                     <tr>

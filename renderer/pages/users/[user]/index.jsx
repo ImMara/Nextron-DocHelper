@@ -29,7 +29,7 @@ function Index(props) {
                         <hr/>
                         <Link href={"/users/"+data.prenom+"/formt"}>
                             <a className="btn w-100 p-3 mb-2 btn-primary"><i
-                                className="fa-solid fa-file-circle-plus me-1"></i>Ajouter une prise de poids</a>
+                                className="fa-solid fa-file-circle-plus me-1"></i>Ajouter une prise de tension</a>
                         </Link>
                         <Link href={"/users/"+data.prenom+"/tabt"}>
                             <a className="btn w-100 p-3 mb-2 btn-primary"><i className="fa-solid fa-eye me-1"></i>Voir le tableaux</a>

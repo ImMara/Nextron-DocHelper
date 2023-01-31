@@ -40,7 +40,7 @@ function Navbar(props) {
                         </li>
                     ))
                 }
-                <li className="m-1 ms-1 ms-sm-auto sp nav-item">
+                <li className="m-1 ms-auto sp nav-item">
                     <Link href="/adduser">
                         <a className="btn btn-primary sp"><i className="fa-solid fa-plus me-1"></i>Ajouter une personne</a>
                     </Link>

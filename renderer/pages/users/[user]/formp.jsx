@@ -50,12 +50,12 @@ function Formp(props) {
                             <div className="card-body">
                                 <form onSubmit={add} className="p-3">
                                     <div className="form-group mb-3">
-                                        <label htmlFor="date">Date</label>
-                                        <input type="date" required defaultValue={date} className="form-control" id="date" name="date" placeholder="Date"/>
+                                        <label htmlFor="date">Ajouter une date</label>
+                                        <input type="date" required defaultValue={date} className="form-control" id="date" name="date" placeholder="Ajouter une date"/>
                                     </div>
                                     <div className="form-group mb-3">
-                                        <label htmlFor="poids">Poids</label>
-                                        <input type="number" required max={'150'}  className="form-control" id="poids" name="poids" placeholder="Poids"/>
+                                        <label htmlFor="poids">Ajouter le poids mesuré</label>
+                                        <input type="number" required max={'150'}  className="form-control" id="poids" name="poids" placeholder="Ajouter le poids ici"/>
                                     </div>
                                     <button type="submit" className="btn btn-danger">Ajouter une prise de poids</button>
                                 </form>

@@ -55,19 +55,19 @@ function Formt(props) {
                             <div className="card-body">
                                 <form onSubmit={add}>
                                     <div className="form-group mb-3">
-                                        <label htmlFor="date">Date</label>
+                                        <label htmlFor="date">Ajouter une date</label>
                                         <input type="date" required defaultValue={date} name="date" className="form-control"
-                                               id="date" placeholder="Date"/>
+                                               id="date" placeholder="Ajouter une date"/>
                                     </div>
                                     <div className="form-group mb-3">
-                                        <label htmlFor="tension">Tension</label>
+                                        <label htmlFor="tension">Ajouter une prise de tension</label>
                                         <input type="number" required name="tension" className="form-control" id="tension"
-                                               placeholder="Tension"/>
+                                               placeholder="Ajouter la tension mesuré"/>
                                     </div>
                                     <div className="form-group mb-3">
-                                        <label htmlFor="heure">Heure?</label>
+                                        <label htmlFor="heure">À quelle heure la prise de tension a-t-elle été effectuée</label>
                                         <input type="time" required defaultValue={time} name="heure" className="form-control"
-                                               id="quand" placeholder="Heure"/>
+                                               id="quand" placeholder="Ajouter une heure"/>
                                     </div>
                                     <button type="submit" className="btn btn-danger">Ajouter une prise de tension</button>
                                 </form>
