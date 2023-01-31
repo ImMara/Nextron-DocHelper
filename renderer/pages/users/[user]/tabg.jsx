@@ -98,14 +98,6 @@ function Tabg(props) {
                                                 )))
                                             }
                                             </tbody>
-                                            <tfoot>
-                                            <tr>
-                                                <th>Date</th>
-                                                <th>Taux</th>
-                                                <th>Quand?</th>
-                                                <th>A jun?</th>
-                                            </tr>
-                                            </tfoot>
                                         </table>
                                         {
                                             pagination && (

@@ -87,13 +87,6 @@ function Tabt(props) {
                                         ))
                                     }
                                     </tbody>
-                                    <tfoot>
-                                    <tr>
-                                        <th>Date</th>
-                                        <th>Heure</th>
-                                        <th>Tension</th>
-                                    </tr>
-                                    </tfoot>
                                 </table>
                                 <Paginate
                                     postsPerPage={postsPerPage}

@@ -47,10 +47,24 @@ function Home() {
           <div className="container w-100 d-flex flex-column justify-content-center">
               <div>
                   <div>
-                      <p>{ update ? "update available":"up to date"}</p>
-                      <p>{ updateDownloaded && "download done" }</p>
+                      { update ? (
+                          <div className={"alert alert-danger"}>
+                              Mise à jour disponible. Téléchargement en cours...
+                          </div>
+                          )
+                          :(
+                              <div className={"alert alert-success"}>
+                                    Aucune mise à jour disponible
+                                </div>
+                            )
+                      }
                       {
-                            updateDownloaded && <a className="btn btn-dark" onClick={restartApp}>Restart</a>
+                            updateDownloaded && (
+                                <div className={"alert alert-success"}>
+                                    Mise à jour téléchargée. Redémarrage de l'application...
+                                    <button className={"btn btn-primary"} onClick={restartApp}>Redémarrer</button>
+                                </div>
+                            )
                       }
                   </div>
                   <h1 className={"my-5 fw-bolder text-danger"}>DOCHELPER APPLICATION {version && version.toString()}</h1>

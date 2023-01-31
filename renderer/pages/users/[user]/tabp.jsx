@@ -84,12 +84,6 @@ function Tabp(props) {
                                         )))
                                     }
                                     </tbody>
-                                    <tfoot>
-                                    <tr>
-                                        <th>Date</th>
-                                        <th>Poids</th>
-                                    </tr>
-                                    </tfoot>
                                 </table>
                                 {pagination &&
                                     <Paginate

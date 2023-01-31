@@ -9,14 +9,15 @@ function Paginate({postsPerPage,totalPosts,paginate ,previousPage, nextPage , cu
 
     return (
         <nav aria-label="Page navigation example">
-
+            {pageNumbers.length > 1 && (
             <ul className="pagination">
-                <li className="page-item" onClick={previousPage}><a className="page-link" href="#">Previous</a></li>
+                <li className="page-item" onClick={previousPage}><a className="page-link">Précédent</a></li>
                     {pageNumbers.map(number => (
                         <li key={number} onClick={() => paginate(number)} className={ currentPage === number ? "page-item active":"page-item"}><a className="page-link">{number}</a></li>
                     ))}
-                <li className="page-item" onClick={nextPage}><a className="page-link" href="#">Next</a></li>
+                <li className="page-item" onClick={nextPage}><a className="page-link">Suivant</a></li>
             </ul>
+            )}
         </nav>
     );
 }
