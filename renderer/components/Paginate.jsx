@@ -10,7 +10,7 @@ function Paginate({postsPerPage,totalPosts,paginate ,previousPage, nextPage , cu
     return (
         <nav aria-label="Page navigation example">
             {pageNumbers.length > 1 && (
-            <ul className="pagination">
+            <ul className="pagination flex-wrap">
                 <li className="page-item" onClick={previousPage}><a className="page-link">Précédent</a></li>
                     {pageNumbers.map(number => (
                         <li key={number} onClick={() => paginate(number)} className={ currentPage === number ? "page-item active":"page-item"}><a className="page-link">{number}</a></li>

@@ -19,6 +19,7 @@ if (isProd) {
     const mainWindow = createWindow('main', {
         width: 1000,
         height: 600,
+        resizeable: false
     });
 
     mainWindow.once('ready-to-show', () => {
