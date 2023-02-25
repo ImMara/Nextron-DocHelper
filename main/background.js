@@ -96,7 +96,8 @@ ipcMain.on('add-glycemie', (event,arg) => {
             taux:arg.taux,
             date:arg.date,
             jun:arg.jun,
-            quand:arg.quand
+            quand:arg.quand,
+            heure:arg.heure
         });
 
         store.set('users',users);

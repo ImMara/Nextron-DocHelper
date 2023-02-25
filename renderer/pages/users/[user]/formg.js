@@ -29,13 +29,15 @@ function formg(props) {
             const jun = data.get('jun');
             const quand = data.get('quand');
             const dateF = data.get('date');
+            const heure = data.get('heure');
 
             const arg = {
                 user: user,
                 taux: taux,
                 date: dateF,
                 jun: jun,
-                quand: quand
+                quand: quand,
+                heure: heure
             }
 
             const response = ipcRenderer.sendSync('add-glycemie', arg);
@@ -76,6 +78,11 @@ function formg(props) {
                                         <option value="Avant-Repas">Avant-midi</option>
                                         <option value="Apres-Repas">Apres repas</option>
                                     </select>
+                                </div>
+                                <div className="form-group mb-3">
+                                    <label htmlFor="heure">À quelle heure la prise de glycémie a-t-elle été effectuée</label>
+                                    <input type="time" required  name="heure" className="form-control"
+                                           id="quand" placeholder="Ajouter une heure"/>
                                 </div>
                                 <div className="form-check mb-3">
                                     <input className="form-check-input" name="jun" type="checkbox" id="defaultCheck1"/>

@@ -83,7 +83,7 @@ function Tabg(props) {
                                                     <tr key={i}>
                                                         <td>{g.date}</td>
                                                         <td>{g.taux}</td>
-                                                        <td>{g.quand}</td>
+                                                        <td>{g.quand} - {g.heure}</td>
                                                         <td>{g.jun ? 'oui' : 'non'}</td>
                                                     </tr>
                                                     )
