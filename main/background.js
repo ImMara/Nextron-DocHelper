@@ -156,6 +156,8 @@ ipcMain.on('add-tension',(event,arg) => {
             tension: arg.tension,
             date: arg.date,
             heure: arg.heure,
+            diastolique: arg.diastolique,
+            systolique: arg.systolique
         });
 
         store.set('users', users);

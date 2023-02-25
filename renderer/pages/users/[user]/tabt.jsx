@@ -66,6 +66,8 @@ function Tabt(props) {
                                         <th>Date</th>
                                         <th>Heure</th>
                                         <th>Tension</th>
+                                        <th>Tension systolique</th>
+                                        <th>Tension diastolique</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -75,6 +77,8 @@ function Tabt(props) {
                                                 <td>{t.date}</td>
                                                 <td>{t.heure}</td>
                                                 <td>{t.tension}</td>
+                                                <td>{t.systolique}</td>
+                                                <td>{t.diastolique}</td>
                                             </tr>
                                         )) :
 
@@ -83,6 +87,8 @@ function Tabt(props) {
                                                 <td>{t.date}</td>
                                                 <td>{t.heure}</td>
                                                 <td>{t.tension}</td>
+                                                <td>{t.systolique}</td>
+                                                <td>{t.diastolique}</td>
                                             </tr>
                                         ))
                                     }
