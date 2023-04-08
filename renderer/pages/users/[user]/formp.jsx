@@ -55,7 +55,7 @@ function Formp(props) {
                                     </div>
                                     <div className="form-group mb-3">
                                         <label htmlFor="poids">Ajouter le poids mesuré</label>
-                                        <input type="number" required max={'150'}  className="form-control" id="poids" name="poids" placeholder="Ajouter le poids ici"/>
+                                        <input type="number" required max={'150'}  className="form-control" id="poids" name="poids" step={0.01} placeholder="Ajouter le poids ici"/>
                                     </div>
                                     <button type="submit" className="btn btn-danger">Ajouter une prise de poids</button>
                                 </form>

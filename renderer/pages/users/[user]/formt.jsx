@@ -27,6 +27,7 @@ function Formt(props) {
         const heure = data.get('heure');
         const systolique = data.get('systolique');
         const diastolique = data.get('diastolique');
+        const pulsation = data.get('pulsation');
 
         const args = {
             user: user,
@@ -34,7 +35,8 @@ function Formt(props) {
             tension: tension,
             heure: heure,
             systolique: systolique,
-            diastolique: diastolique
+            diastolique: diastolique,
+            pulsation: pulsation
         }
 
         const response = ipcRenderer.sendSync('add-tension', args);
@@ -76,6 +78,11 @@ function Formt(props) {
                                     <div className="form-group mb-3">
                                         <label htmlFor="tension">Ajouter une prise de tension diastolique</label>
                                         <input type="number" required name="diastolique" className="form-control" id="tension"
+                                               placeholder="Ajouter la tension mesuré"/>
+                                    </div>
+                                    <div className="form-group mb-3">
+                                        <label htmlFor="tension">Ajouter une pulsation</label>
+                                        <input type="number" required name="pulsation" className="form-control" id="tension"
                                                placeholder="Ajouter la tension mesuré"/>
                                     </div>
                                     <div className="form-group mb-3">
