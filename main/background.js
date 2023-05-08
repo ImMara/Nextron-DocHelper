@@ -48,7 +48,7 @@ app.on('window-all-closed', () => {
 });
 
 ipcMain.on('restart', (event) => {
-    autoUpdater.quitAndInstall(true,true);
+    autoUpdater.quitAndInstall();
 });
 
 ipcMain.on('app_version', (event) => {
